@@ -55,7 +55,7 @@ function panopoly_paid_event_field_default_fields() {
             'calculation' => 'calculated_sell_price',
           ),
           'type' => 'commerce_price_formatted_amount',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -292,6 +292,9 @@ function panopoly_paid_event_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_product_event',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'product_id' => array(
           'columns' => array(
@@ -373,9 +376,167 @@ function panopoly_paid_event_field_default_fields() {
     ),
   );
 
+  // Exported field: 'registration-paid_event-field_register_first_name'.
+  $fields['registration-paid_event-field_register_first_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_register_first_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'paid_event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
+        ),
+        'review_pane' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'registration',
+      'field_name' => 'field_register_first_name',
+      'label' => 'First Name',
+      'required' => 1,
+      'settings' => array(
+        'linkit' => array(
+          'enable' => 0,
+          'insert_plugin' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'maxlength_js' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'registration-paid_event-field_register_last_name'.
+  $fields['registration-paid_event-field_register_last_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_register_last_name',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'paid_event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Please provide your registration first and last name.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '3',
+        ),
+        'review_pane' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'registration',
+      'field_name' => 'field_register_last_name',
+      'label' => 'Last Name',
+      'required' => 1,
+      'settings' => array(
+        'linkit' => array(
+          'enable' => 0,
+          'insert_plugin' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'maxlength_js' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('First Name');
+  t('Last Name');
   t('Paid Event');
+  t('Please provide your registration first and last name. This info will be used for your event badge. NOTE: Subsequent steps will request your billing and legal name. This information will be keep private and is merely used for billing and organizational purposes. For more information please refer to our <a href="http://www.gayromlit.com/terms">Terms</a> and <a href="http://www.gayromlit.com/privacy">Privacy</a> pages');
   t('Price');
   t('Product');
   t('Registration');
