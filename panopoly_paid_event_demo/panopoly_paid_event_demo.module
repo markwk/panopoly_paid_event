@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * 
+ */
+
+
+function panopoly_paid_event_demo_init() {
+
+  // Attach default products to the demo content
+  if (variable_get('install_task', 'done') == 'done' && !variable_get('panopoly_paid_event_demo_products', FALSE)) {
+
+    // Get the products that are in code
+    module_load_include('inc', 'panopoly_paid_event_demo', 'panopoly_paid_event_demo.products');
+    $products = panopoly_paid_event_demo_products();
+    
+    // Determine the nids of the demo content
+    $nids = db_select('defaultcontent', 'd')
+      ->fields('d', array('nid'))
+      ->condition('name', db_like('panopoly-paid-event-demo') . '%', 'LIKE')
+      ->execute()
+      ->fetchCol();
+    $nodes = node_load_multiple($nids);
+
+    // Load the products and assign it to display nodes
+    foreach ($products as $product) {
+      commerce_product_save($product);
+      foreach ($nodes as $node) {
+        if ($node->machine_name == $product->sku) {
+          $node->field_product_event[LANGUAGE_NONE][] = array(
+              'product_id' => $product->product_id);
+          node_save($node);
+        }
+      }
+    }
+ 
+    // Set the variable so we only do this once
+    variable_set('panopoly_paid_event_demo_products', TRUE);
+  }
+
+}

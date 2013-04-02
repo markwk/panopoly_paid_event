@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implements hook_disable()
+ */
+function panopoly_paid_event_demo_disable() {
+
+  // Get the products that are in code
+  module_load_include('inc', 'panopoly_paid_event_demo', 'panopoly_paid_event_demo.products');
+  $products_in_code = panopoly_paid_event_demo_products();
+
+  // Load them to delete them
+  foreach ($products_in_code as $product) {
+      $prod = commerce_product_load_by_sku($product->sku);
+      commerce_product_delete($prod->product_id);
+  }
+
+  // Delete the variable that controls this
+  variable_del('panopoly_paid_event_demo_products');
+}
