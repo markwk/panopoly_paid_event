@@ -17,7 +17,18 @@ function panopoly_paid_event_demo_default_page_manager_pages() {
   $page->admin_description = '';
   $page->path = 'paid-event-demo';
   $page->access = array();
-  $page->menu = array();
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Paid Event Demo',
+    'name' => 'main-menu',
+    'weight' => '0',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
   $page->arguments = array();
   $page->conf = array(
     'admin_paths' => FALSE,
@@ -93,13 +104,19 @@ function panopoly_paid_event_demo_default_page_manager_pages() {
     $pane = new stdClass();
     $pane->pid = 'new-2';
     $pane->panel = 'sidebar';
-    $pane->type = 'block';
-    $pane->subtype = 'search-form';
+    $pane->type = 'search_box';
+    $pane->subtype = 'search_box';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Enter your keywords',
+      'type' => 'node',
+      'form' => 'simple',
+      'path_type' => 'default',
+      'path' => '',
+      'override_prompt' => 0,
+      'prompt' => '',
+      'override_title' => 0,
+      'override_title_text' => 'Search the Site',
     );
     $pane->cache = array();
     $pane->style = array(
